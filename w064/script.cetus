@@ -1,0 +1,8 @@
+#!/bin/sh
+# run with:
+#     qsub -O w064 -A CrystalsADSP -t 00:60:00 -n 256 --mode script script.cetus
+
+CODE_n=/home/junteng/qe-5.4-mira/CPV/src/cp.x
+
+# runjob -n 256 -p 1 --block $COBALT_PARTNAME --envs OMP_NUM_THREADS=32 --verbose=INFO : $CODE_n -ndiag 256 < 01.in > 01.vc
+runjob -n 256 -p 1 --block $COBALT_PARTNAME --envs OMP_NUM_THREADS=32 --verbose=INFO : $CODE_n -ndiag 256 < 02.in > 02.vc

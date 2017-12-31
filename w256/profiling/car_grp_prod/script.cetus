@@ -1,0 +1,13 @@
+#!/bin/sh
+# run with:
+#     qsub -O w256 -A CrystalsADSP -t 00:30:00 -n 2048 --mode script script.cetus
+
+CODE_n=/home/junteng/QE-5.4-mira/CPV/src/cp.x
+
+# runjob -n 512 -p 4 --block $COBALT_PARTNAME --envs OMP_NUM_THREADS=4 --verbose=INFO : $CODE_n -ndiag 256 < 01.in > 01.vc
+# runjob -n 512 -p 1 --block $COBALT_PARTNAME --envs OMP_NUM_THREADS=16 --verbose=INFO : $CODE_n -ndiag 256 < 02.in > 02.vc
+# runjob -n 256 -p 1 --block $COBALT_PARTNAME --envs OMP_NUM_THREADS=16 --verbose=INFO : $CODE_n -ndiag 256 < 03.in > 03.0.vc
+# runjob -n 512 -p 1 --block $COBALT_PARTNAME --envs OMP_NUM_THREADS=16 --verbose=INFO : $CODE_n -ndiag 484 < 03.in > 03.1.vc
+# runjob -n 512 -p 1 --block $COBALT_PARTNAME --envs OMP_NUM_THREADS=16 --verbose=INFO : $CODE_n -ndiag 484 < 03.in > 03.0.vc
+# runjob -n 1024 -p 1 --block $COBALT_PARTNAME --envs OMP_NUM_THREADS=16 --verbose=INFO : $CODE_n -ndiag 1024 < 03.in > 03.1.vc
+runjob -n 2048 -p 1 --block $COBALT_PARTNAME --envs OMP_NUM_THREADS=16 --verbose=INFO : $CODE_n -ndiag 1024 -ntg 8 < 03.in > 03.2.vc
